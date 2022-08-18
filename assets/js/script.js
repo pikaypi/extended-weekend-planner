@@ -38,7 +38,7 @@ function populatePage(apiData) {
 // A function that calls all the necessary geographical and holiday related details from the APIs
 async function populateVars() {
     // Fetch the geolocation info and store it in an object
-    const geoFetch = await fetch('http://ipwho.is/').then(response => response.json());
+    const geoFetch = await fetch('https://ipwho.is/').then(response => response.json());
     geoInfo = {
         'country': geoFetch.country,
         'countryCode': geoFetch.country_code,
