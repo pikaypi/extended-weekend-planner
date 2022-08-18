@@ -4,6 +4,26 @@ var weekends = [];
 var holidayList = $('#holidays-container');
 var color = 1;
 
+
+var testButton = document.getElementById('testButton')
+
+
+var calendar
+document.addEventListener('DOMContentLoaded', function() {
+    var calendarEl = document.getElementById('calendar');
+    calendar = new FullCalendar.Calendar(calendarEl, {
+      initialView: 'dayGridMonth',
+
+    });
+    calendar.render();
+    $(document).ready(function(){
+        $(testButton).click(function(){
+          calendar.gotoDate(moment(holidays[0].startDate, 'M-D-YYYY').format('YYYY-MM-DD'));
+        });
+      });
+    
+});
+
 // A function that takes in 3 strings, and displays them in the table
 function addHoliday(startDate, endDate, holidayName) {
     if (startDate != undefined) {
