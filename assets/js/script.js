@@ -9,7 +9,7 @@ function addHoliday(startDate, endDate, holidayName) {
     if (startDate != undefined) {
         holidayList.append('<div class="pl-1 bg-green-' + color + '00">' + startDate + '</div>');
         holidayList.append('<div class="pl-1 bg-green-' + color + '00">' + endDate + '</div>');
-        holidayList.append('<div class="pl-1 bg-green-' + color + '00 col-span-2">' + holidayName + '</div>');
+        holidayList.append('<div class="pl-1 bg-green-' + color + '00 col-span-2 redirect" id="' + holidayName + '">' + holidayName + '</div>');
         
         // Use the global "color" variable to toggle the row color
         if (color === 1) {
