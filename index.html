@@ -5,15 +5,40 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="./assets/images/icon.png">
+    <script
+    type="text/javascript"
+    src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"
+  ></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="./assets/css/style.css">
     <title>Project 1 Title</title>
 </head>
-<body>
+<body class="bg-blue-400 p-4">
+    <h1 class="bg-blue-900 text-white text-center text-5xl py-3 rounded-lg">Three Day Weekend Planner</h1>
+    <br>
 
-    <script src="https://code.jquery.com/jquery-3.6.0.js"
-        integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
-        crossorigin="anonymous">
+    <div class="grid sm:grid-cols-1 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6" id="location-container">
+        <img src="https://via.placeholder.com/250" alt="A placeholder for an image based on the user's location" class="col-span-1 justify-self-center">
+        <ul class="sm:col-span-1 md:col-span-3 lg:col-span-4">
+            <li class="text-center sm:text-left md:pl-2 text-3xl font-bold" id="current-location">Current Location</li>
+            <li class="text-center sm:text-left sm:pl-4" id="current-date">Today's Date</li>
+        </ul>
+    </div>
+    <br>
+
+    <h2 class="text-white font-bold text-center md:text-left">Go to specific holiday</h2>
+    <div class="grid grid-cols-4 gap-x-px" id="holidays-container">
+        <div class="bg-green-500 text-green-100 pl-1 font-semibold rounded-tl-lg">Start Date</div>
+        <div class="bg-green-500 text-green-100 pl-1 font-semibold">End Date</div>
+        <div class="bg-green-500 text-green-100 pl-1 font-semibold rounded-tr-lg col-span-2">Holiday</div>
+    </div>
+    <br>
+
+    <div class="bg-orange-100 text-center" id="calendar-container">
+        Calendar Div
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous">
     </script>
     <script src="./assets/js/script.js"></script>
 </body>
