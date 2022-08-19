@@ -23,10 +23,13 @@ function addHoliday(startDate, endDate, holidayName) {
         holidayList.append('<div class="pl-1 bg-green-' + color + '00">' + startDate + '</div>');
         holidayList.append('<div class="pl-1 bg-green-' + color + '00">' + endDate + '</div>');
         holidayList.append('<div data-startDate="' + startDate + '" class="pl-1 bg-green-' + color + '00 col-span-2 redirect" id="' + holidayName + '">' + holidayName + '</div>');
-        
+
+        //When DOM loaded, target all divs with redirect class
         $(document).ready(function(){
             $('div.redirect').click(function(e){
+                //Pull the startdate located in the div dataset, format the date, then go to that date on the calendar
                 calendar.gotoDate(moment(e.target.dataset.startdate, 'M-D-YYYY').format('YYYY-MM-DD'));
+
             });
           });
             
