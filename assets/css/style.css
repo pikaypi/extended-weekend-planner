@@ -2,3 +2,8 @@
     background-color: white;
     cursor: pointer;
 }
+
+.redirect:active {
+    background-color: grey;
+    color: white;
+}
