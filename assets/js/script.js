@@ -4,9 +4,7 @@ var weekends = [];
 var holidayList = $('#holidays-container');
 var color = 1;
 
-
-var testButton = document.getElementById('testButton')
-
+var testButton = document.getElementsByClassName('redirect')
 
 var calendar
 document.addEventListener('DOMContentLoaded', function() {
@@ -16,21 +14,22 @@ document.addEventListener('DOMContentLoaded', function() {
 
     });
     calendar.render();
-    $(document).ready(function(){
-        $(testButton).click(function(){
-          calendar.gotoDate(moment(holidays[0].startDate, 'M-D-YYYY').format('YYYY-MM-DD'));
-        });
-      });
-    
 });
+
 
 // A function that takes in 3 strings, and displays them in the table
 function addHoliday(startDate, endDate, holidayName) {
     if (startDate != undefined) {
         holidayList.append('<div class="pl-1 bg-green-' + color + '00">' + startDate + '</div>');
         holidayList.append('<div class="pl-1 bg-green-' + color + '00">' + endDate + '</div>');
-        holidayList.append('<div class="pl-1 bg-green-' + color + '00 col-span-2 redirect" id="' + holidayName + '">' + holidayName + '</div>');
+        holidayList.append('<div data-startDate="' + startDate + '" class="pl-1 bg-green-' + color + '00 col-span-2 redirect" id="' + holidayName + '">' + holidayName + '</div>');
         
+        $(document).ready(function(){
+            $('div.redirect').click(function(e){
+                calendar.gotoDate(moment(e.target.dataset.startdate, 'M-D-YYYY').format('YYYY-MM-DD'));
+            });
+          });
+            
         // Use the global "color" variable to toggle the row color
         if (color === 1) {
             color++
