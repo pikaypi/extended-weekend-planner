@@ -7,7 +7,7 @@ This application helps the user identify and plan upcoming extended weekends.
 * The interactive calendar allows the user to enter and store information in specific dates
 
 ## Where to Find It
-The application is deployed [here](https://pikaypi.github.io/project-placeholder/).
+The application is deployed [here](https://pikaypi.github.io/project-placeholder/ target="_blank").
 
 ## What It Looks Like
 ![A screenshot of the long weekend planner application](./assets/images/screenshot.png)
