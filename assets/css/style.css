@@ -4,6 +4,6 @@
 }
 
 .redirect:active {
-    background-color: grey;
+    background-color: rgb(38, 129, 41);
     color: white;
 }
