@@ -2,6 +2,11 @@
     background-color: white;
     cursor: pointer;
 }
+
 #calendar {
     background-color: white;
+
+.redirect:active {
+    background-color: rgb(38, 129, 41);
+    color: white;
 }
