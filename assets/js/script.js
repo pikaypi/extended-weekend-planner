@@ -144,3 +144,9 @@ async function populateVars() {
 
 // Call the function to pull data from the APIs
 populateVars()
+
+// Allow for added Holiday's to be dragged to respective date.
+$(function() {
+    $( "#draggable" ).draggable();
+     });
+     
