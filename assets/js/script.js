@@ -4,14 +4,38 @@ var weekends = [];
 var holidayList = $('#holidays-container');
 var color = 1;
 
-var testButton = document.getElementsByClassName('redirect')
+var selectedStartDate
+var selectedEndDate
+var selectedHolidayName
 
+var testButton = document.getElementsByClassName('redirect')
+//Load calendar from calendar API once DOM content is loaded
 var calendar
 document.addEventListener('DOMContentLoaded', function() {
     var calendarEl = document.getElementById('calendar');
     calendar = new FullCalendar.Calendar(calendarEl, {
       initialView: 'dayGridMonth',
-
+      headerToolbar: {
+        center: 'addEventButton'
+      },
+      customButtons: {
+        //Add button to add selected event to calendar
+        addEventButton: {
+          text: 'Add Selected Holiday to Calendar',
+          click: function() {
+            console.log(selectedStartDate)
+            //Funtion to dynamically add the selected holiday to the calendar as an event
+            calendar.addEvent({
+                title: 'Vacation Plan for ' + selectedHolidayName,
+                start: moment(selectedStartDate, 'M-D-YYYY').format('YYYY-MM-DD'),
+                end: moment(selectedEndDate, 'M-D-YYYY').add(1, 'days').format('YYYY-MM-DD'),
+                allDay: true,
+                color: '#006400',
+                textcolor: 'Black',
+                borderColor: 'Black',
+                display: 'background'
+              })}
+          }}
     });
     calendar.render();
 });
@@ -22,13 +46,16 @@ function addHoliday(startDate, endDate, holidayName) {
     if (startDate != undefined) {
         holidayList.append('<div class="pl-1 bg-green-' + color + '00">' + startDate + '</div>');
         holidayList.append('<div class="pl-1 bg-green-' + color + '00">' + endDate + '</div>');
-        holidayList.append('<div data-startDate="' + startDate + '" class="pl-1 bg-green-' + color + '00 col-span-2 redirect" id="' + holidayName + '">' + holidayName + '</div>');
+        holidayList.append('<div data-holidayName="' + holidayName + '" data-endDate="' + endDate + '" data-startDate="' + startDate + '" class="pl-1 bg-green-' + color + '00 col-span-2 redirect" id="' + holidayName + '">' + holidayName + '</div>');
 
         //When DOM loaded, target all divs with redirect class
         $(document).ready(function(){
             $('div.redirect').click(function(e){
                 //Pull the startdate located in the div dataset, format the date, then go to that date on the calendar
-                calendar.gotoDate(moment(e.target.dataset.startdate, 'M-D-YYYY').format('YYYY-MM-DD'));
+                selectedStartDate = e.target.dataset.startdate
+                selectedEndDate = e.target.dataset.enddate
+                selectedHolidayName = e.target.dataset.holidayname
+                calendar.gotoDate(moment(selectedStartDate, 'M-D-YYYY').format('YYYY-MM-DD'));
 
             });
           });
